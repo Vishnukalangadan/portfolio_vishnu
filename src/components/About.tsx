@@ -49,10 +49,11 @@ export default function About() {
             variant="body1"
             sx={{ fontSize: "1rem", color: theme.palette.text.secondary }}
           >
-            Hi, I'm Vishnu — a passionate React Developer with 3+ years of
-            experience building scalable, responsive apps using React.js, React
-            Native, and Next.js. I enjoy solving problems, collaborating with
-            teams, and crafting clean, maintainable UI code.
+            <Typography>{"Hi, I'm Vishnu"}</Typography>— a passionate React
+            Developer with 3+ years of experience building scalable, responsive
+            apps using React.js, React Native, and Next.js. I enjoy solving
+            problems, collaborating with teams, and crafting clean, maintainable
+            UI code.
             <br />
             <br />
             I’ve worked on both mobile and web projects, and I always strive to

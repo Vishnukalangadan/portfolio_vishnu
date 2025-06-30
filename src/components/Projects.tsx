@@ -7,7 +7,6 @@ import {
   CardMedia,
   Typography,
   Button,
-  Grid,
   Chip,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -67,57 +66,65 @@ export default function Projects() {
         Projects
       </Typography>
 
-      <Grid container spacing={4}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr 1fr",
+            md: "1fr 1fr 1fr",
+          },
+          gap: 4,
+        }}
+      >
         {projects.map((project, idx) => (
-          <Grid item xs={12} sm={6} md={4} key={idx}>
-            <StyledCard>
-              <CardMedia
-                component="img"
-                height="180"
-                image={project.image}
-                alt={project.title}
-              />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {project.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {project.description}
-                </Typography>
+          <StyledCard key={idx}>
+            <CardMedia
+              component="img"
+              height="180"
+              image={project.image}
+              alt={project.title}
+            />
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                {project.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {project.description}
+              </Typography>
 
-                <Tags>
-                  {project.tech.map((tech, i) => (
-                    <Chip key={i} label={tech} size="small" color="primary" />
-                  ))}
-                </Tags>
+              <Tags>
+                {project.tech.map((tech, i) => (
+                  <Chip key={i} label={tech} size="small" color="primary" />
+                ))}
+              </Tags>
 
-                <Box mt={2} display="flex" gap={1}>
+              <Box mt={2} display="flex" gap={1}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  href={project.github}
+                  target="_blank"
+                  size="small"
+                >
+                  GitHub
+                </Button>
+                {project.demo && (
                   <Button
-                    variant="outlined"
-                    color="primary"
-                    href={project.github}
+                    variant="contained"
+                    color="secondary"
+                    href={project.demo}
                     target="_blank"
                     size="small"
                   >
-                    GitHub
+                    Demo
                   </Button>
-                  {project.demo && (
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      href={project.demo}
-                      target="_blank"
-                      size="small"
-                    >
-                      Demo
-                    </Button>
-                  )}
-                </Box>
-              </CardContent>
-            </StyledCard>
-          </Grid>
+                )}
+              </Box>
+            </CardContent>
+          </StyledCard>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }
